@@ -52,3 +52,85 @@ let msg = one(function (){
 });
 
 console.log(msg);
+
+
+//Higher order functions------> ese functions jisme function return ho ya parameter mai function accept kare
+function abcd(){
+    return function (){
+        console.log("Hui Hui")
+    }
+}
+abcd()();
+
+// Pure vs Impure Functions:
+//Pure: Bahr ke variable ki value na badle!!
+//Impure: Jo Bhar ke varibale ke hisab se value badl de!!
+
+let j = 12;
+
+function pure(){
+    console.log("mai pure hu!");
+}
+
+function impure(){
+    j++
+    console.log(j);
+}
+
+//Clousres: Ek esa function jo rerturn kare ek aur function!
+
+function closures(){
+    return function (){
+        console.log("i am clousre!");
+    }
+}
+
+//lexical scoping: function ke andr ka variable khali ussi function ya uske andr ke function mai use ho skta hai! viceversa not possible!
+function lexical(){
+    console.log("Mai 3rd level pe  hu");
+    let a = 10;
+
+    abcd();
+    function abcd(){
+        console.log("Mai 3rd level pe  hu");
+        console.log(a);
+        let b = 12;
+
+            efgh();
+            function efgh(){
+                console.log("Mai 3rd level pe  hu");
+                console.log(a);
+                console.log(b)
+            }
+    }
+}
+lexical();
+
+
+
+//IFES : IMEDIATELY INVOKED FUNCTION EXPRESSIONS
+
+(function harsh(){
+    console.log("HARSH JI KAISE HO!");
+}) ();                                               //------> yhi IFES hai: Bracket ke andr function
+
+
+// Hoisting------------------> functions mai hoti hai
+// Function expressions -------> NO HOISTING
+// Function Statements ====>   HOISTING is possible!
+
+keys();                                  //----------- Hoisting not possible
+statements();                     //----------- Hoisting not possible
+
+
+
+//expression
+let keys = ()=>{
+    console.log("Keyboard");
+}                                      //----------- Hoisting not possible
+
+
+//statements
+function statements (){
+    console.log("Hello");
+}                                      //----------- Hoisting not possible
