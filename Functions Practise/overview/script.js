@@ -134,3 +134,45 @@ let keys = ()=>{
 function statements (){
     console.log("Hello");
 }                                      //----------- Hoisting not possible
+
+
+
+
+//use rest parameters for accepting any number of scores and return the total.
+function getScore(...scores){
+    let total = 0;
+    scores.forEach((el)=>{
+        total += el;
+    });
+    return total
+}
+
+console.log(getScore(10,20,30,15));
+
+
+// Clousres 
+function outer (){
+    let count = 0;
+    return function () {
+        count++;
+        console.log(count);
+    };
+}
+
+let counter = outer();
+counter();
+counter();
+
+//  what is IIFE? Name one real world use cases:
+
+let shery = (function(){
+    let score = 0;
+    return {
+        getScore: function (){
+            console.log(score);
+        },
+        setScore: function (val){
+            score = val;
+        }
+    };
+})();
